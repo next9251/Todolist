@@ -135,7 +135,7 @@ export default {
   background-color: #71fadc;
   border-color: #71fadc;
   color: #fff;
-}
+} 
 .flex{
   display: flex;
   flex-direction: row;
