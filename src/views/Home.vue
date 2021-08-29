@@ -4,17 +4,17 @@
      <div class="card">
        <p class=title>Todo List</p>
        <div class=todo>
-         <div class="flex">
-           <input type="text" class="input-add" v-model="text" />
+         <form method="post" action="https://frozen-peak-65901.herokuapp.com/api" class="flex">
+           <input type="text" class="input-add" v-model="text" placeholder="タスクを入力してください"/>
            <button data class="button-add" @click="add">追加</button>
-         </div>
-         <div class="flex">
+         </form>
+         <form method="put" action="https://frozen-peak-65901.herokuapp.com/api" class="flex">
            <input type="text" class="input-update" />
            <div data>
              <button class="button-update">更新</button>
              <button class="button-delete">削除</button>
            </div>
-         </div>
+         </form>
        </div>
      </div>
    </div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -29,11 +30,19 @@ export default {
     };
   },
   methods: {
-   add() {
-     this.list.push({
-      text: this.text
-     });
-   }
+    auth(){  
+      axios
+      .post("https://frozen-peak-65901.herokuapp.com/api/register",{
+        text:this.text,
+      })
+      .then(response=>{
+        console.log(response);
+        this.$router.response("/");
+      })
+      .catch(error => {
+        alert(error);
+      });
+    }
   }
 };
 </script>
