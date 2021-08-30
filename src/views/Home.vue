@@ -5,6 +5,7 @@
        <p class=title>Todo List</p>
        <div class=todo>
          <form method="post" action="https://frozen-peak-65901.herokuapp.com/api" class="flex">
+
            <input type="text" class="input-add" v-model="text" placeholder="タスクを入力してください"/>
            <button data class="button-add" @click="add">追加</button>
          </form>
@@ -26,17 +27,17 @@ import axios from "axios";
 export default {
   data() {
     return {
-      text: "",
+      text: [],
     };
   },
   methods: {
     auth(){  
       axios
       .post("https://frozen-peak-65901.herokuapp.com/api/register",{
-        text:this.text,
+        text:this.text
       })
       .then(response=>{
-        console.log(response);
+        console.log(response);  
         this.$router.response("/");
       })
       .catch(error => {
@@ -155,3 +156,4 @@ export default {
   margin-right: 5px;
 }
 </style>
+
